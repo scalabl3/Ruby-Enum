@@ -16,3 +16,12 @@ e.val1?	# => true
 
 m = MyClass.new {myvar => "my var value", myenum => MyEnum::VAL1 }
 
+
+TODO ----
+Initialize:
+  Check fixnum/integer parameter in initialize against created class Constants to see if valid, raise error if not
+  Check symbol parameter in initialize against created class Constants to see if valid, raise error if not
+
+New Subclasses
+  Create an Exclusive Enum (XOR)
+  Create Bitwise Enum (&=) aware to_s method that calculates the Constants required to create that int value

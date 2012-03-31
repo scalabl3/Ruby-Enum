@@ -18,6 +18,7 @@ class Enum
 
   private
 
+	# define instance methods based on enumeration passed in
   def self.enum_attr(name, num)
     name = name.to_s
 
@@ -47,8 +48,9 @@ class Enum
 
   public
 
+	# can pass in Fixnum/Integer, a predefined symbol, an array of symbols
   def initialize(attrs = 0)
-    if attrs.is_a? Fixnum
+    if attrs.is_a?(Fixnum) || attrs.is_a?(Integer)
       @attrs = attrs
     end
 
@@ -66,4 +68,15 @@ class Enum
   def to_i
     @attrs
   end
+
+	# NOTE: this only works for non-bit based enumerations, combinatorial enumerations will return nil 
+	def to_s
+		constants = class_eval self.class.to_s + "::constants"
+	  constants.each do |constant|
+	  	const = self.class.to_s + "::" + constant.to_s
+	    if @attrs == class_eval(const)
+	    	return const
+	    end
+	  end
+	end
 end

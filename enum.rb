@@ -55,12 +55,12 @@ class Enum
     end
 
     if attrs.is_a? Symbol
-      send attrs.to_s + "=", class_eval(self.class.to_s + "::" + attrs.to_s.upcase)
+      send attrs.to_s + "=", instance_eval(self.class.to_s + "::" + attrs.to_s.upcase)
     end
 
     if attrs.is_a? Array
       attrs.each do |attr|
-        send attr.to_s + "=", class_eval(self.class.to_s + "::" + attr.to_s.upcase)
+        send attr.to_s + "=", instance_eval(self.class.to_s + "::" + attr.to_s.upcase)
       end
     end
   end
@@ -71,12 +71,13 @@ class Enum
 
 	# NOTE: this only works for non-bit based enumerations, combinatorial enumerations will return nil 
 	def to_s
-		constants = class_eval self.class.to_s + "::constants"
+		constants = instance_eval self.class.to_s + "::constants"
 	  constants.each do |constant|
 	  	const = self.class.to_s + "::" + constant.to_s
-	    if @attrs == class_eval(const)
+	    if @attrs == instance_eval(const)
 	    	return const
 	    end
 	  end
+		nil
 	end
 end

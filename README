@@ -1,0 +1,18 @@
+Enum Parent Class for emulating Enum's of other strong typed languages like C++, C# and Java
+
+Usage: 
+
+class MyEnum < Enum
+  enum_attr :val1, 1
+  enum_attr :val2, 2
+end
+
+e = MyEnum.new MyEnum::VAL2 # => #<MyEnum:0x007f968b2bef20 @attrs=2>
+e.val2?	# => true
+e.val1?	# => false
+e.to_i	# => 2
+e.val1 = true # => true
+e.val1?	# => true
+
+m = MyClass.new {myvar => "my var value", myenum => MyEnum::VAL1 }
+

@@ -1,4 +1,5 @@
-## Enum Parent Class for emulating Enum's of other strong typed languages like C++, C# and Java
+## Enum Parent Class for emulating Enum
+*can use these like other built in enum's of languages like C++, C# and Java*
 
 ### Usage:
 ``` ruby

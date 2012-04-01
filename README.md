@@ -20,8 +20,21 @@ e.val1?					# => true
 e.to_i					# => 3
 e.to_s					# => nil because it is a composite set of multiple enums bit |=
 e.to_s.class		# => NilClass
-````
 
+puts e.pm
+
+#  to_i()       MyEnum(Enum)
+#  val1()       MyEnum
+# val1=(arg1)   MyEnum
+# val1?()       MyEnum
+#  val2()       MyEnum
+# val2=(arg1)   MyEnum
+# val2?()       MyEnum
+
+constants = instance_eval e.class.to_s + "::constants"
+puts constants.inspect	# => [:VAL1, :VAL2]
+
+```
 ### Example Usage:
 ``` ruby
 m = MyClass.new {myvar => "my var value", myenum => MyEnum::VAL1 }

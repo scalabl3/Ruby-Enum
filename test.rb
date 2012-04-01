@@ -19,3 +19,7 @@ puts e.val1?	# => true
 puts e.to_i	# => 3
 puts e.to_s # => nil
 puts e.to_s.class # => nil
+puts e.pm
+
+constants = instance_eval e.class.to_s + "::constants"
+puts constants.inspect	# => [:VAL1, :VAL2] 
